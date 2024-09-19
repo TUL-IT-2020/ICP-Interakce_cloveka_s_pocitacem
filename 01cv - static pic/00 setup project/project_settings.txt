@@ -1,0 +1,58 @@
+WINDOWS: 
+
+Download from https://opencv.org/releases/ 
+
+Extract opencv-4.8.0-windows.exe to C:\
+
+Add/change user specific variable:
+ Ovladaci panely -> uzivatelske ucty -> Student -> Zmenit promenne prostredi
+(Control panel   -> User accounts    -> Student -> Change system variables)
+
+Add: 
+    Name:  OPENCV_DIR
+    Value: C:\opencv\build
+
+Modify variable PATH
+    Add item:  %OPENCV_DIR%\x64\vc16\bin
+-------------------------------------------------------------------------------
+VISUAL STUDIO
+
+Create new project: C++ Console Application
+    Name: <your_favorite_name>
+    Location: <some_writable_directory>
+    
+    <CHECK> Place solution and project in the same directory  
+
+Platform: X64
+
+ 
+Click RMB: Project - properties - configuration properties - general 
+    Select Configuration: "ALL CONFIGURATIONS"
+        C++ language standard - ISO C++17 standard
+
+Click RMB: Project - properties - configuration properties - VC++ directories 
+  >>ADD<< paths (do NOT replace all content):
+       - executable - $(OPENCV_DIR)\x64\vc16\bin;
+       - include    - $(OPENCV_DIR)\include;
+       - libraries  - $(OPENCV_DIR)\x64\vc16\bin;
+                      $(OPENCV_DIR)\x64\vc16\lib;
+
+Click RMB: Project - properties - configuration properties - linker - input
+    Select DEBUG config
+    ADD: additional dependencies - opencv_world480d.lib 
+
+Click RMB: Project - properties - configuration properties - linker - input
+    Select RELEASE config
+    ADD: additional dependencies - opencv_world480.lib 
+
+
+(OPTIONAL: project - properties - configuration properties - C/C++ - Advanced - Disable specific warnings - 4996,4793,...)
+
+((should not happen) In case, that your app can not find DLLs (this should not happen), copy those missing from $(OPENCV_DIR)\x64\vc16\bin to your project directory near your .CPP file)
+
+-------------------------------------------------------------------------------
+
+Create directory "Resource" in your project directory (dir containing .cpp files).
+
+-------------------------------------------------------------------------------
+                    
