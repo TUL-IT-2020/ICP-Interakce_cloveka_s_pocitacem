@@ -9,8 +9,7 @@
 #include <numeric>
 
 // OpenCV 
-#include <opencv2\opencv.hpp>
-
+#include <opencv2/opencv.hpp>
 
 void draw_cross_relative(cv::Mat& img, const cv::Point2f center_relative, const int size)
 {
@@ -59,7 +58,7 @@ cv::Point2f centroid_nonzero(cv::Mat& scene, cv::Scalar& lower_threshold, cv::Sc
 int main(int argc, char* argv[])
 {
 	// load image
-//	cv::Mat scene = cv::imread("resources/lightbulb.jpg"); //can be JPG,PNG,GIF,TIFF,...
+	//cv::Mat scene = cv::imread("resources/lightbulb.jpg"); //can be JPG,PNG,GIF,TIFF,...
 	//cv::Mat scene = cv::imread("resources/sunset.webp"); //can be JPG,PNG,GIF,TIFF,...
 	cv::Mat scene = cv::imread("resources/hsv-map.png"); //can be JPG,PNG,GIF,TIFF,...
 
