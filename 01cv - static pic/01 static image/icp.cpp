@@ -1,8 +1,10 @@
 // icp.cpp 
 // author: JJ
 
-#include <iostream>
 #include <opencv2/opencv.hpp>
+#include <iostream>
+#include <stdexcept>
+#include <chrono>
 
 // our application class 
 class App {
@@ -12,6 +14,7 @@ public:
     // public methods
     bool init(void);
     int run(void);
+    unsigned char compute_threshold(cv::Vec3b pixel);
 
     void draw_cross_normalized(cv::Mat& img, cv::Point2f center_relative, int size);
     void draw_cross(cv::Mat& img, int x, int y, int size);
@@ -45,14 +48,21 @@ bool App::init()
     return true;
 }
 
+unsigned char App::compute_threshold(cv::Vec3b pixel)
+{
+    // compute temp grayscale value (convert from colors to Y)
+    unsigned char Y = 0.299 * pixel[2] + 0.587 * pixel[1] + 0.114 * pixel[0];
+    return Y;
+}
+
 int App::run(void)
 {
     try {
         // read image
-        cv::Mat frame = cv::imread("resources/lightbulbb.jpg");  //can be JPG,PNG,GIF,TIFF,...
+        cv::Mat frame = cv::imread("resources/lightbulb.jpg");  //can be JPG,PNG,GIF,TIFF,...
 
         if (frame.empty())
-            throw std::exception("Empty file? Wrong path?");
+            throw std::runtime_error("Empty file? Wrong path?");
 
         //start timer
         auto start = std::chrono::steady_clock::now();
@@ -63,6 +73,7 @@ int App::run(void)
 
         // convert to grayscale, create threshold, sum white pixels
         // compute centroid of white pixels (average X,Y coordinate of all white pixels)
+        int white_pixel_count = 0;
         cv::Point2f center;
         cv::Point2f center_normalized;
 
@@ -74,24 +85,34 @@ int App::run(void)
                 cv::Vec3b pixel = frame.at<cv::Vec3b>(y, x);
 
                 // compute temp grayscale value (convert from colors to Y)
-                unsigned char Y = ? ? *pixel[? ] + ? ? *pixel[? ] + ? ? *pixel[? ];
-
+                unsigned char Y = compute_threshold(pixel);
+                //frame2.at<cv::Vec3b>(y, x) = cv::Vec3b(Y, Y, Y);
 
                 // FIND THRESHOLD (value 0..255)
-                if (Y < ? ? ? ) {
+                if (Y < 240 ) {
                     // set output pixel black
-                    frame2.at<cv::Vec3b>(y, x) = cv::Vec3b(? ? , ? ? , ? ? );
+                    frame2.at<cv::Vec3b>(y, x) = cv::Vec3b(0, 0, 0);
                 }
                 else {
                     // set output pixel white
-                    frame2.at<cv::Vec3b>(y, x) = cv::Vec3b(? ? , ? ? , ? ? );
+                    frame2.at<cv::Vec3b>(y, x) = cv::Vec3b(255, 255, 255);
 
-                    //update centroid...
+                    //update centroid
+                    white_pixel_count++;
+                    center.x += x;
+                    center.y += y;
                 }
 
             }
         }
 
+        // compute centroid
+        center.x /= white_pixel_count;
+        center.y /= white_pixel_count;
+
+        // normalize centroid
+        center_normalized.x = center.x / frame.cols;
+        center_normalized.y = center.y / frame.rows;
 
         std::cout << "Center absolute: " << center << '\n';
         std::cout << "Center normalized: " << center_normalized << '\n';

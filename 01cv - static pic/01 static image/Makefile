@@ -3,8 +3,11 @@
 # Compiler
 CXX = g++
 
+# Default to C++17 if CXX_STD is not set
+CXX_STD ?= c++17
+
 # Compiler flags
-CXXFLAGS = -std=c++11 `pkg-config --cflags opencv4`
+CXXFLAGS = -std=$(CXX_STD) `pkg-config --cflags opencv4`
 
 # Linker flags
 LDFLAGS = `pkg-config --libs opencv4`
