@@ -13,10 +13,11 @@ CXXFLAGS = -std=$(CXX_STD) `pkg-config --cflags opencv4`
 LDFLAGS = `pkg-config --libs opencv4`
 
 # Target executable
-TARGET = icp.out
+TARGET = main.out
 
 # Source files
-SRCS = icp.cpp
+#SRCS = main_threads.cpp
+SRCS = main.cpp
 
 # Object files
 OBJS = $(SRCS:.cpp=.o)

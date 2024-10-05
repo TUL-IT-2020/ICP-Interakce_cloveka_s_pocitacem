@@ -20,6 +20,8 @@ public:
 	// public methods
 	int init(void);
 	int run(void);
+
+	// static methods
 	cv::Point2f find_face(cv::Mat & frame);
 	void draw_cross_relative(cv::Mat& img, cv::Point2f center_relative, int size);
 
@@ -111,7 +113,7 @@ cv::Point2f App::find_face(cv::Mat & frame)
     return center;      
 }
 
-void draw_cross_relative(cv::Mat& img, const cv::Point2f center_relative, const int size)
+void App::draw_cross_relative(cv::Mat& img, cv::Point2f center_relative, int size)
 {
 	cv::Point p;
 	p.x = center_relative.x * img.cols;

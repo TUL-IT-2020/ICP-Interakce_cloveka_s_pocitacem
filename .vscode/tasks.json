@@ -17,7 +17,8 @@
                 "-lopencv_imgproc",
                 "-lopencv_highgui",
                 "-lopencv_videoio",
-                "-lopencv_imgcodecs"
+                "-lopencv_imgcodecs",
+                "-lopencv_objdetect"
             ],
             "options": {
                 "shell": {
