@@ -1,6 +1,11 @@
 // icp.cpp 
 // Author: JJ
 
+#include <opencv2/opencv.hpp>
+#include <iostream>
+#include <stdexcept>
+#include <chrono>
+
 class App {
     ...
 private:
