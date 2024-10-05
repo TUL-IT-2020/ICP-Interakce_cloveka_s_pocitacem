@@ -1,1 +1,2 @@
 libopencv-dev
+v4l-utils
