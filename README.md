@@ -19,3 +19,7 @@ Požadavky:
 Program pro GPU.
 
 ![[3D Grafika]]
+
+## Cvičení
+
+- [[tasks.md]]

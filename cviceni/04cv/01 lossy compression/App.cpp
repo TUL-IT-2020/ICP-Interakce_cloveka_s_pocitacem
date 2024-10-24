@@ -152,3 +152,12 @@ App::~App()
     cv::destroyAllWindows();
     std::cout << "Bye...\n";
 }
+
+// main function
+int main()
+{
+    App app;
+    if (app.init())
+        return app.run();
+    return EXIT_FAILURE;
+}

@@ -1,45 +1,21 @@
-# Makefile for icp.cpp
+# Definujte proměnné
+CC = g++
+CFLAGS = -Wall -g -std=c++17
+INCLUDES = -I/usr/include/opencv4
+LIBS = -L/usr/local/lib -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_objdetect -lopencv_imgcodecs
+TARGET = app.out
 
-# Compiler
-CXX = g++
-
-# Default to C++17 if CXX_STD is not set
-CXX_STD ?= c++17
-
-# Compiler flags
-CXXFLAGS = -std=$(CXX_STD) `pkg-config --cflags opencv4`
-
-# Linker flags
-LDFLAGS = `pkg-config --libs opencv4`
-
-# Target executable
-TARGET = App.out
-
-# Source files
-#SRCS = main_threads.cpp
-SRCS = App.cpp
-
-# Object files
-OBJS = $(SRCS:.cpp=.o)
-
-# Default target
+# Výchozí cíl
 all: $(TARGET)
 
-# Rule to build the target executable
-$(TARGET): $(OBJS)
-	$(CXX) -o $@ $^ $(LDFLAGS)
+# Pravidlo pro sestavení programu
+$(TARGET): App.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) App.cpp -o $(TARGET) $(LIBS)
 
-# Rule to build object files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Clean up build files
+# Pravidlo pro vyčištění sestavení
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(TARGET) *.o
 
-# Run the application
-run: all
+# Pravidlo pro spuštění programu
+run: $(TARGET)
 	./$(TARGET)
-
-# Phony targets
-.PHONY: all clean run

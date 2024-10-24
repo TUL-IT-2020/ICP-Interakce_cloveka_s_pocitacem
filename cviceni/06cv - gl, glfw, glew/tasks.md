@@ -1,3 +1,4 @@
+# Cvičení 6
 - create functional project with all libraries (OpenCV, GLFW, GLEW, GLM)
   
 - modify (extend) your app
@@ -13,15 +14,17 @@
         - display FPS as a window title
     - create and register GLFW error callback
     - create and register additional callbacks (maybe empty at the moment)
-    	glfwSetKeyCallback(window, key_callback);
-    	glfwSetFramebufferSizeCallback(window, fbsize_callback);
-    	glfwSetMouseButtonCallback(window, mouse_button_callback);
-    	glfwSetCursorPosCallback(window, cursor_position_callback);
-    	glfwSetScrollCallback(window, scroll_callback);
-    - use glewinfo.exe (or similar on other platforms) to get list of supported versions and extensions
+    	`glfwSetKeyCallback(window, key_callback);`
+    	`glfwSetFramebufferSizeCallback(window, fbsize_callback);`
+    	`glfwSetCursorPosCallback(window, cursor_position_callback);`
+    	`glfwSetMouseButtonCallback(window, mouse_button_callback);`
+    	`glfwSetCursorPosCallback(window, cursor_position_callback);`
+    	`glfwSetCursorPosCallback(window, cursor_position_callback);`
+    	`glfwSetScrollCallback(window, scroll_callback);`
+    - use **glewinfo.exe** (or similar on other platforms) to get list of supported versions and extensions
         - verify, that you can use debug_output
     - GL debug output
-    - implement VSync toggle
+    - implement **VSync** toggle
         - use function key F12
         - modify window title to show vsync off,on
         - note: see the FPS difference  
