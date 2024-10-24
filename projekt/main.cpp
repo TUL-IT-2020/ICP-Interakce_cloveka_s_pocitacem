@@ -110,7 +110,7 @@ cv::Point2f App::find_face(cv::Mat & frame)
 
 	std::cout << "found normalized center: " << center << std::endl;
 
-    return center;      
+    return center;
 }
 
 void App::draw_cross_relative(cv::Mat& img, cv::Point2f center_relative, int size)

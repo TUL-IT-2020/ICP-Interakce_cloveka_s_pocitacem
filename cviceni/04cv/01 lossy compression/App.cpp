@@ -30,7 +30,7 @@ bool App::init()
     return true;
 }
 
-std::vector<uchar> App::lossy_bw_limit(cv::Mat& input_img, size_t size_limit)
+std::vector<uchar> App::lossy_bw_limit(cv::Mat& input_img, std::size_t size_limit)
 {
     std::string suff(".jpg"); // target format
     if (!cv::haveImageWriter(suff))

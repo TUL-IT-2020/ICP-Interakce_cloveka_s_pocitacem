@@ -8,7 +8,7 @@ public:
 
     bool init(void);
     
-    std::vector<uchar> lossy_bw_limit(cv::Mat& input_img, size_t size_limit);
+    std::vector<uchar> lossy_bw_limit(cv::Mat& input_img, std::size_t size_limit);
     
     int run(void);
 
