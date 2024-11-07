@@ -1,0 +1,11 @@
+For GLSL syntax highlighting in Visual Studio, install plugin:
+
+Extensions -> Manage extensions -> Search: GLSL
+
+(Preferred)
+https://marketplace.visualstudio.com/items?itemName=DanielScherzer.GLSL
+
+
+( There are also others...
+  https://marketplace.visualstudio.com/items?itemName=TimGJones.HLSLToolsforVisualStudio )
+  
