@@ -1,2 +1,3 @@
 libopencv-dev
+libglfw3-dev
 v4l-utils
