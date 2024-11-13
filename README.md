@@ -3,6 +3,7 @@
 ## Zkouška
 Máme velkou semestrálku.
 
+Nepoužívat knihovnu `GLUT`, zastaralá.
 ### Semestrální práce
 Požadavky:
 - Přepínání aplikace mezi window/fullsreen.
