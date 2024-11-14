@@ -1,0 +1,27 @@
+#pragma once
+
+#include <string>
+#include <filesystem>
+#include <GL/glew.h> 
+
+class ShaderProgram {
+public:
+
+	void activate(void) {
+        if (ID==currently_used)
+            return;
+        else {     
+            glUseProgram(ID);
+            currently_used = ID;
+        }
+    };    // activate shader
+	void deactivate(void) { 
+        glUseProgram(0);
+        currently_used = 0; 
+    };
+    
+private:
+    static GLuint currently_used{0};
+
+};
+

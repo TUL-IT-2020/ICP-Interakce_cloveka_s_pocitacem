@@ -1,5 +1,12 @@
 # ICP - Interakce člověka s počítačem
 
+## Literatura
+- OpenGL Programming Guide
+- OpenGL Superbible
+- Computer Graphics Programing in Opengl with C++
+- [shadertoy](www.shadertoy.com)
+
+
 ## Zkouška
 Máme velkou semestrálku.
 
