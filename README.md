@@ -6,16 +6,19 @@
 - Computer Graphics Programing in Opengl with C++
 - [shadertoy](www.shadertoy.com)
 
-
 ## Zkouška
 Máme velkou semestrálku.
 
-Nepoužívat knihovnu `GLUT`, zastaralá.
 ### Semestrální práce
 Požadavky:
 - Přepínání aplikace mezi window/fullsreen.
 - 60fps 3D grafika. 
+- Odevzdání klidně příští semestr.
+- Nahrát na git, link emailem.
 
+Bude se ptát proč to nefunguje a kdo za to může.
+
+Nepoužívat knihovnu `GLUT`, zastaralá.
 ## Poznámky
 
 > [!warning] 
@@ -32,11 +35,19 @@ Program pro GPU.
 
 cv6:
 - [[tasks.md]]
+- [Installing GLFW on Ubuntu](https://shnoh171.github.io/gpu%20and%20gpu%20programming/2019/08/26/installing-glfw-on-ubuntu.html)
 
-[Installing GLFW on Ubuntu](https://shnoh171.github.io/gpu%20and%20gpu%20programming/2019/08/26/installing-glfw-on-ubuntu.html)
-
+cv8:
+- [[TUL-navazující_studium/3. semestr/ICP-Interakce_cloveka_s_pocitacem/cviceni/08cv - pipe,VAO,shaders/README|tasks]]
+- [x] draw single triangle
+- [x] Change the color of the triangle
+	- add key handling to change r,g,b
+	- change r,g,b based on running time
 cv9:
-- [ ] Kompilace generických shaderů definových v souboru
+- [x] Kompilace generických shaderů definových v souboru
+- [ ] Na-cache-ování uniform location pro zrychlení předání hodnot grafice.
+- [x] Přidání Mash, model, vertex
+- [ ] Vyřešit aby se zdrojové soubory ne-includovali několikrát.
 cv10:
 - [ ] Načtěte alespoň dva objekty
 - [ ] Inicializujte perspektivu
@@ -45,7 +56,7 @@ cv10:
 	- [ ] Klávesnice -> pohyb kamery
 Proplouvání kamerou mezi 3 krychličkami.
 
-Používejte smart pointery
+> [!tip] Používejte smart pointery
 
 cv11:
 - [[TUL-navazující_studium/3. semestr/ICP-Interakce_cloveka_s_pocitacem/cviceni/11cv - tex/README|tasks]]
@@ -67,6 +78,12 @@ cv::imwrite(img, file_name)
 - [ ] Klonování obrazu z kamery na zem bludiště.
 cv12:
 - [ ] Vykreslit alespoň jeden průhledný objekt.
+cv13:
+- [ ] 4 zdroje světla:
+	- [ ] Ambient
+	- [ ] Směrový `L = vec3(const)`
+	- [ ] Bodový `L = vec3(const) - P.xyz`
+	- [ ] Reflektor
 
 Texturovací jednotky
 Kolik jich máme?
@@ -86,5 +103,12 @@ cv::MAT(2x2, u8_C3)
 bílá, černá
 černá, bílá
 Nastavit opakování
+
+> [!info] SoA vs AoS
+> Structure of arrays versus Array of structures.
+> Struktura polí je rychlejší na přístup do paměti s CACHE.
+
+> [!info] Ambient
+> Nedávat ambientní složku k směrovému, bodovému, reflektoru, protože to vypadá blbě. 
 
 
